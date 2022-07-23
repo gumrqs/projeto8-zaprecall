@@ -1,0 +1,60 @@
+.conteiner{
+    padding-left: 37px;
+    padding-right: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.topo{
+
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+.topo p{
+    font-family: Righteous;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 45px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 20px;
+
+}
+.perguntas{ 
+    margin-top: 59px;
+    width: 300px;
+    height: 65px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    
+
+}
+.estilos-perguntas{
+    
+    display: flex;
+    justify-content: space-between;
+
+}
+.estilos-perguntas p{
+    font-family: Recursive;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: left;
+    margin: 23px 15px 23px 15px;
+
+}
+.estilos-perguntas ion-icon{
+    
+    color: #333333;
+    width: 20px;
+    height: 23px;
+    margin: 23px 15px 23px 15px;
+
+}
