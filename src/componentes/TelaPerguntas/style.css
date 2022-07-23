@@ -14,6 +14,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-bottom: 59px;
     
 }
 .topo p{
@@ -27,11 +28,13 @@
 
 }
 .perguntas{ 
-    margin-top: 59px;
+    
     width: 300px;
     height: 65px;
     background-color: #FFFFFF;
     border-radius: 5px;
+    margin-bottom: 25px;
+    
     
 
 }
@@ -39,6 +42,7 @@
     
     display: flex;
     justify-content: space-between;
+    
 
 }
 .estilos-perguntas p{
@@ -57,4 +61,60 @@
     height: 23px;
     margin: 23px 15px 23px 15px;
 
+}
+.footer {
+    width: 100%;
+    height: 70px;
+    background-color: #FFFFFF;
+    font-family: Recursive;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+    margin-top: 109px;
+}
+
+.pergunta-fechada{
+    width: 100%;
+    height: 131px;
+    background-color: #FFFFD4;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    position: relative;
+
+}
+.pergunta-fechada p {
+    font-family: 'Recursive',sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+
+}
+.img-pergunta-fechada{
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    right: 8px;
+    bottom: 5px;
+}
+.resposta-pergunta{
+    width: 100%;
+    height:131px;
+    background-color: #FEF7D4;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+.resposta-pergunta p{
+    font-family: 'Recursive';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+
+}
+.nao-lembrei{
+    width: 85.2px;
+    height: 37.2px;
+    background-color: #FF3030;
 }
