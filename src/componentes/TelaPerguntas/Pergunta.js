@@ -3,7 +3,7 @@ import setinha from "./setinha.png"
 
 
 
-export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }){
+export default function Pergunta({pergunta, questao, resposta, setEstiloFooter, numero }){
 
     const [estadoDaPergunta, setEstadoDaPergunta]=React.useState("fechada");
     function mostrarQuestao(){
@@ -15,23 +15,26 @@ export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }
             setEstadoDaPergunta("respostaVista")
         }
         if(estadoDaPergunta==="respostaVista"){
-            setEstadoDaPergunta("opcaoVerde")
+            setEstadoDaPergunta("")
         }
     }
     function responderQuestao(resposta){
         if(resposta==="errou"){
             setEstadoDaPergunta("vermelho")
-            setEstiloFooter("close-circle" )
+            setEstiloFooter(["close-circle", numero])
         }
-        else if(resposta==="quase"){
+
+        if(resposta==="quase"){
             setEstadoDaPergunta("laranja");
-            setEstiloFooter("help-circle-sharp")
+            setEstiloFooter(["help-circle", numero])
         }
-        else if(resposta==="acertou"){
+        
+        if(resposta==="acertou"){
             setEstadoDaPergunta("verde")
-            setEstiloFooter("checkmark-circle")
+            setEstiloFooter(["checkmark-circle", numero])
         }
-    }
+        }
+    
     return (
         <> 
             {
@@ -39,7 +42,7 @@ export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }
                 ? 
                 <div className="perguntas">
                     <div className="estilos-perguntas">
-                        <p>{pergunta}</p>
+                        <p>Pergunta {numero}</p>
                     <div>
                         <ion-icon name="play-outline" onClick={mostrarQuestao} ></ion-icon>
                     </div>
@@ -79,7 +82,7 @@ export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }
                     ?
                     <div className="perguntas">
                         <div className="estilos-perguntas-respondidas">
-                            <p>{pergunta}</p>
+                            <p>Pergunta {numero}</p>
                         <div>
                         <ion-icon name="close-circle"></ion-icon>
                         </div>
@@ -90,7 +93,7 @@ export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }
                     ?
                     <div className="perguntas">
                         <div className="estilos-perguntas-respondidas-verde">
-                            <p>{pergunta}</p>
+                            <p>Pergunta {numero}</p>
                         <div>
                         <ion-icon name="checkmark-circle"></ion-icon>
                         </div>
@@ -101,9 +104,9 @@ export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }
                         ?
                     <div className="perguntas">
                         <div className="estilos-perguntas-respondidas-laranja">
-                            <p>{pergunta}</p>
+                            <p>Pergunta {numero}</p>
                         <div>
-                        <ion-icon name="help-circle-sharp"></ion-icon>
+                        <ion-icon name="help-circle"></ion-icon>
                         </div>
                         </div>
                       </div>  

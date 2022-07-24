@@ -1,14 +1,15 @@
 import "./style.css"
 import logoPequeno from './logo-pequeno.png'
 import { escolhendoPerguntas } from "./Dados"
-import Pergunta from "./Pergunta"
-import React from "react"
+import Pergunta from "./Pergunta";
+import Footer from "../Footer/Footer";
+import React from "react";
 
 
 export default function TelaPerguntas(){
     
     const[estiloFooter, setEstiloFooter]= React.useState("")
-    let perguntas = escolhendoPerguntas.map(pergunta => <Pergunta setEstiloFooter={setEstiloFooter} pergunta={pergunta.pergunta}  questao={pergunta.questao} resposta={pergunta.resposta} />);
+    let perguntas = escolhendoPerguntas.map((pergunta,index) => <Pergunta key={index} numero={index+1} setEstiloFooter={setEstiloFooter} pergunta={pergunta.pergunta}  questao={pergunta.questao} resposta={pergunta.resposta} />);
     
     return(
     <>
@@ -18,12 +19,9 @@ export default function TelaPerguntas(){
                 <img src={logoPequeno}/>
                 <p>ZapRecall</p>            
             </div>
-            {perguntas} 
-            {/* <Pergunta pergunta={perguntas} responderQuestao={responderQuestao} mostrarQuestao={mostrarQuestao} estadoDaPergunta={estadoDaPergunta}/> */}
-        </div>
-        <div className="footer">
-            <p><ion-icon name={estiloFooter}></ion-icon></p>
-        </div>
+                {perguntas} 
+                <Footer estiloFooter={estiloFooter} perguntas={perguntas}/>
+            </div>
        
     </>);
 }
