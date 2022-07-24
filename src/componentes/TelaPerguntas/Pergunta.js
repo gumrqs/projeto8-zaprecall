@@ -3,21 +3,35 @@ import setinha from "./setinha.png"
 
 
 
-export default function Pergunta({pergunta, questao, resposta}){
-   /*  let questoes = cardQuestoes.map(questao => <Pergunta questao={questao.questao} resposta={questao.resposta}/>)
+export default function Pergunta({pergunta, questao, resposta, setEstiloFooter }){
 
- */
     const [estadoDaPergunta, setEstadoDaPergunta]=React.useState("fechada");
     function mostrarQuestao(){
         if(estadoDaPergunta === "fechada"){ 
             setEstadoDaPergunta("aberta");
-          
+            
         }
         if(estadoDaPergunta==="aberta"){
-            setEstadoDaPergunta("aopaOlhaaResposta")
+            setEstadoDaPergunta("respostaVista")
+        }
+        if(estadoDaPergunta==="respostaVista"){
+            setEstadoDaPergunta("opcaoVerde")
         }
     }
-
+    function responderQuestao(resposta){
+        if(resposta==="errou"){
+            setEstadoDaPergunta("vermelho")
+            setEstiloFooter("close-circle" )
+        }
+        else if(resposta==="quase"){
+            setEstadoDaPergunta("laranja");
+            setEstiloFooter("help-circle-sharp")
+        }
+        else if(resposta==="acertou"){
+            setEstadoDaPergunta("verde")
+            setEstiloFooter("checkmark-circle")
+        }
+    }
     return (
         <> 
             {
@@ -44,27 +58,58 @@ export default function Pergunta({pergunta, questao, resposta}){
 
                     
                  :
-                 <>
+                    estadoDaPergunta ==="respostaVista"
+                        ?
                     <div className='resposta-pergunta'>
                         <p>{resposta}</p>
+                        <div className="opcoes">
+                            <div className=  'nao-lembrei' onClick={()=>responderQuestao("errou")}>
+                                <p>Não lembrei</p>
+                            </div>
+                            <div className='quase-nao-lembrei' onClick={()=>responderQuestao("quase")}>
+                                <p>Quase não lembrei</p>
+                            </div>
+                            <div className='zap'onClick={()=>responderQuestao("acertou")}>
+                                <p>zap!</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="opcoes">
-                        <div className='nao-lembrei'>
-                            <p>Não lembrei</p>
+                :
+                    estadoDaPergunta==="vermelho"
+                    ?
+                    <div className="perguntas">
+                        <div className="estilos-perguntas-respondidas">
+                            <p>{pergunta}</p>
+                        <div>
+                        <ion-icon name="close-circle"></ion-icon>
                         </div>
-                        <div className='quase-nao-lembrei'>
-                            <p>Quase não lembrei</p>
                         </div>
-                        <div className='zap'>
-                            <p>zap!</p>
+                    </div>
+                :
+                    estadoDaPergunta ==="verde"
+                    ?
+                    <div className="perguntas">
+                        <div className="estilos-perguntas-respondidas-verde">
+                            <p>{pergunta}</p>
+                        <div>
+                        <ion-icon name="checkmark-circle"></ion-icon>
                         </div>
+                        </div>
+                    </div>
+                : 
+                    estadoDaPergunta==="laranja"
+                        ?
+                    <div className="perguntas">
+                        <div className="estilos-perguntas-respondidas-laranja">
+                            <p>{pergunta}</p>
+                        <div>
+                        <ion-icon name="help-circle-sharp"></ion-icon>
+                        </div>
+                        </div>
+                      </div>  
+                      :<></>
 
-                        
-                    </div>
-                </>
-                    
                 
-                    
             }  
      
         </>
