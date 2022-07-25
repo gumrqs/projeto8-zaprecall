@@ -3,7 +3,7 @@ import setinha from "./setinha.png"
 
 
 
-export default function Pergunta({ questao, resposta, setEstiloFooter, numero, estiloFooter, index }){
+export default function Pergunta({ questao, resposta, setEstiloFooter, numero, estiloFooter }){
 
     const [estadoDaPergunta, setEstadoDaPergunta]=React.useState("fechada");
     function mostrarQuestao(){
@@ -35,7 +35,6 @@ export default function Pergunta({ questao, resposta, setEstiloFooter, numero, e
         }
         setEstiloFooter([...estiloFooter]);
         }
-        console.log(estiloFooter, "PSDIOJAOSK");
     
     return (
         <> 

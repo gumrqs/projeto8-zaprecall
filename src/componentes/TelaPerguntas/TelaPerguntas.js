@@ -13,11 +13,9 @@ export default function TelaPerguntas(){
         return Math.random() - 0.5; 
     }
     escolhendoPerguntas.sort(comparador);
-    let perguntas = escolhendoPerguntas.map((pergunta,index) => <Pergunta key={index} index={index} numero={index+1} estiloFooter={estiloFooter} setEstiloFooter={setEstiloFooter} pergunta={pergunta.pergunta}  questao={pergunta.questao} resposta={pergunta.resposta} />);
-    
+    let selecionados= escolhendoPerguntas.slice(-4);
 
-    
-
+    let perguntas = selecionados.map((pergunta,index) => <Pergunta key={index}  numero={index+1} estiloFooter={estiloFooter} setEstiloFooter={setEstiloFooter} pergunta={pergunta.pergunta}  questao={pergunta.questao} resposta={pergunta.resposta} />);
 
     return(
     <>
@@ -28,8 +26,9 @@ export default function TelaPerguntas(){
                 <p>ZapRecall</p>            
             </div>
             {perguntas} 
-            <Footer estiloFooter={estiloFooter} setEstiloFooter={setEstiloFooter} perguntas={perguntas} />
+            
         </div>
+        <Footer estiloFooter={estiloFooter} perguntas={perguntas} />
        
     </>);
 }
