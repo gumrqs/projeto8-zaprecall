@@ -2,31 +2,44 @@ import React from "react";
 import FooterIonIcon from "./FooterIonIcon";
 import './style.css'
 
-export default function Footer({ estiloFooter, perguntas }){
-    const [arrFooter, setArrFooter]=React.useState([]);
-    const [nomeClasse, setNomeClasse]=React.useState([]);
- 
+export default function Footer({ estiloFooter, numero, perguntas, setEstiloFooter}){
 
-    if(estiloFooter[0]==="close-circle"){
-        arrFooter.push(estiloFooter[0]);
-        nomeClasse.push("vermelho");
-        
+    const [resultadoFinal, setResultadoFinal]=React.useState(<></>);
+    if(estiloFooter.length===8){
+        const arrVerificar = estiloFooter.filter(verificador);
+        if(arrVerificar.length === 0){
+            setResultadoFinal(
+                <>  
+                <div>
+                    <p>parabens</p>
+                </div>
+                </>
+            );
+        }
+        else{
+            setResultadoFinal(
+            <>
+            <div>
+                <p>parabens</p>
+            </div>
+            </>);
+        }
     }
-     if(estiloFooter[0]==="help-circle"){
-        arrFooter.push(estiloFooter[0]);
+    function verificador(obj){
+        if(obj.cor === "vermelho"){
+            return true;
+        }
     }
-     if(estiloFooter[0]==="checkmark-circle"){
-        arrFooter.push(estiloFooter[0]);
-    }
-    console.log(arrFooter);
     return(
 
         <div className="footer">
-            
-            <p>
-            {arrFooter.length}/{perguntas.length} COncluídos
-                {arrFooter.map((nomeIcone,index) => <FooterIonIcon key={index} nomeIcone={nomeIcone} nomeClasse={nomeClasse} numero={index}/>)}   
-            </p>
+            {resultadoFinal}
+            <div>
+                {estiloFooter.length}/{perguntas.length} CONCLUÍDOS
+                <div className="flex">
+                    {estiloFooter.map((tipoQuestao,index) => <FooterIonIcon key={index} nomeIcone={tipoQuestao.nome} nomeClasse={tipoQuestao.cor} numero={index} />)}
+                </div>   
+            </div>
         </div>
     )
 }

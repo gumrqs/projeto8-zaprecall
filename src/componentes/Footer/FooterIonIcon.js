@@ -1,9 +1,10 @@
 
 
-export default function FooterIonIcon({ nomeIcone, nomeClasse, numero}){
+export default function FooterIonIcon({ nomeIcone, nomeClasse}){
+    console.log(nomeClasse);
     return(
-        <>
-            <ion-icon className={nomeClasse[numero]} name={nomeIcone} ></ion-icon>
-        </>
+        <div className={nomeClasse}>
+            <ion-icon name={nomeIcone}></ion-icon>
+        </div>
     )
 }

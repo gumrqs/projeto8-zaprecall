@@ -14,6 +14,34 @@
     margin-top: 89px;
 
 }
-.vermelho  ion-icon{
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer p{
+    text-align: center;
+}
+
+.vermelho{
     color: #FF3030;
+    font-size: 23px;
+}
+
+.verde{
+    color: #2FBE34;
+    font-size: 23px;
+}
+
+.laranja{
+    color: #FF922E;
+    font-size: 23px;
 }

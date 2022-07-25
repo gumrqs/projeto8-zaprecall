@@ -3,7 +3,7 @@ import setinha from "./setinha.png"
 
 
 
-export default function Pergunta({pergunta, questao, resposta, setEstiloFooter, numero }){
+export default function Pergunta({ questao, resposta, setEstiloFooter, numero, estiloFooter, index }){
 
     const [estadoDaPergunta, setEstadoDaPergunta]=React.useState("fechada");
     function mostrarQuestao(){
@@ -20,20 +20,22 @@ export default function Pergunta({pergunta, questao, resposta, setEstiloFooter, 
     }
     function responderQuestao(resposta){
         if(resposta==="errou"){
-            setEstadoDaPergunta("vermelho")
-            setEstiloFooter(["close-circle", numero])
+            setEstadoDaPergunta("vermelho");
+            estiloFooter.push({nome:"close-circle", cor:"vermelho"});
         }
 
         if(resposta==="quase"){
             setEstadoDaPergunta("laranja");
-            setEstiloFooter(["help-circle", numero])
+            estiloFooter.push({nome:"help-circle", cor:"laranja"});
         }
         
         if(resposta==="acertou"){
-            setEstadoDaPergunta("verde")
-            setEstiloFooter(["checkmark-circle", numero])
+            setEstadoDaPergunta("verde");
+            estiloFooter.push({nome:"checkmark-circle", cor:"verde"});
         }
+        setEstiloFooter([...estiloFooter]);
         }
+        console.log(estiloFooter, "PSDIOJAOSK");
     
     return (
         <> 
